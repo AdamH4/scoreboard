@@ -1,7 +1,7 @@
 
 
 import { test, expect, describe, beforeEach } from '@jest/globals'
-import { Scoreboard } from '../src/scoreboard'
+import Scoreboard from '../src/scoreboard'
 
 
 describe('Scoreboard init', () => {

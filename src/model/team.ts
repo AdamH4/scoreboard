@@ -19,3 +19,6 @@ class Team implements TeamInterface {
     this.score = newScore
   }
 }
+
+
+export default Team

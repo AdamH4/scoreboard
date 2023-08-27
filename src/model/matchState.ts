@@ -5,3 +5,5 @@ enum MatchState {
  IN_PROGRESS,
  FINISHED,
 }
+
+export default MatchState
