@@ -1,12 +1,23 @@
 
 
-import { test, expect } from '@jest/globals'
+import { test, expect, describe, beforeEach } from '@jest/globals'
+import { Scoreboard } from '../src/scoreboard'
 
 
-test('Initialize Scoreboard', () => {
+describe('Scoreboard init', () => {
 
-  const scoreboards = new Scoreboard()
+  let scoreboard: Scoreboard
 
-  expect(scoreboards).toBeDefined()
+  beforeEach(() => {
+    scoreboard = new Scoreboard()
+  })
+
+  test('Initialize Scoreboard', () => {
+    expect(scoreboard).toBeDefined()
+  })
+
+  test('Has no matches', () => {
+    expect(scoreboard.matches.size).toBe(0)
+  })
 })
 
