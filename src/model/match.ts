@@ -33,8 +33,13 @@ class Match implements MatchInterface {
   }
 
   updateScore(homeTeamScore: number, awayTeamScore: number): Match {
-    this.homeTeam.score = homeTeamScore
-    this.awayTeam.score = awayTeamScore
+    this.homeTeam.score = Number.isInteger(homeTeamScore)
+      ? homeTeamScore
+      : Math.round(homeTeamScore)
+
+    this.awayTeam.score = Number.isInteger(awayTeamScore)
+      ? awayTeamScore
+      : Math.round(awayTeamScore)
 
     return this
   }

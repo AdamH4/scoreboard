@@ -21,10 +21,18 @@ describe('Update match score', () => {
 
 
   test('Update match score from scoreboard', () => {
-    if(match?.id){
-      scoreboard.updateScore(match?.id, 4, 1)
+    if(match){
+      scoreboard.updateScore(match.id, 4, 1)
 
-      expect(match?.score.scoreString).toBe("4:1")
+      expect(match.score.scoreString).toBe("4:1")
+    }
+  })
+
+  test('Update match score with float number', () => {
+    if(match){
+      scoreboard.updateScore(match.id, 1.25, 1.75)
+
+      expect(match.score.scoreString).toBe("1:2")
     }
   })
 
