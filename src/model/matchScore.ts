@@ -2,24 +2,21 @@ import Team from "./team"
 
 
 interface MatchScoreInterface {
-  home: Team,
-  away: Team
-
   scoreString: string
 }
 
 
 class MatchScore implements MatchScoreInterface {
-  home: Team
-  away: Team
+  private _home: Team
+  private _away: Team
 
   constructor(home: Team, away: Team) {
-    this.home = home 
-    this.away = away
+    this._home = home 
+    this._away = away
   }
 
   get scoreString(): string {
-    return `${this.home.score}:${this.away.score}`
+    return `${this._home.score}:${this._away.score}`
   }
 }
 

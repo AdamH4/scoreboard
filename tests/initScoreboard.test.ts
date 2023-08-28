@@ -17,7 +17,7 @@ describe('Scoreboard init', () => {
   })
 
   test('Has no matches', () => {
-    expect(scoreboard.matches.size).toBe(0)
+    expect(scoreboard.matches.length).toBe(0)
   })
 })
 

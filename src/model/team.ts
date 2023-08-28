@@ -1,16 +1,32 @@
 
 interface TeamInterface {
-  name: string,
-  score: number,
+
+  get name(): string
+  get score(): number
+  set score(score: number)
 }
 
 
 class Team implements TeamInterface {
-  name: string
-  score: number = 0
+  private _name: string
+  private _score: number = 0
 
   constructor(name: string) {
-    this.name = name
+    this._name = name
+  }
+
+  get name() {
+    return this._name
+  }
+
+  get score() {
+    return this._score
+  }
+
+  set score(score: number) {
+    this._score = Number.isInteger(score)
+      ? score
+      : Math.round(score)
   }
 }
 

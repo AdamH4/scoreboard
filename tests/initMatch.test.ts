@@ -19,7 +19,7 @@ describe('Scoreboard init match', () => {
   })
 
   test('Match size increased', () => {
-    expect(scoreboard.matches.size).toBe(1)
+    expect(scoreboard.matches.length).toBe(1)
   })
 
   test('Match exists in scoreboard', () => {

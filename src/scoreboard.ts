@@ -3,25 +3,30 @@ import Match from './model/match';
 
 
 interface ScoreBoardInterface {
-  matches: Map<String, Match>
 
+  get matches(): Match[]
   getMatch(key: string): Match | undefined
   createMatch(homeTeamName: string, awayTeamName: string): Match | null
   updateScore(id: string, homeTeamScore: number, awayTeamScore: number): Match | null
   finishMatch(id: string): void
-  getSumary(): Match[]
+  getSummary(): Match[]
 }
 
 
 class Scoreboard implements ScoreBoardInterface {
-  matches: Map<string, Match>
+  private _matches: Map<string, Match>
 
   constructor() {
-    this.matches = new Map()
+    this._matches = new Map()
   }
 
+  get matches() {
+    return [...this._matches.values()]
+  }
+
+
   getMatch(key: string): Match | undefined {
-      return this.matches.get(key)
+      return this._matches.get(key)
   }
 
 
@@ -35,8 +40,8 @@ class Scoreboard implements ScoreBoardInterface {
       awayTeamName
     )
 
-    if(!this.matches.has(id)) {
-      this.matches.set(id, match)
+    if(!this._matches.has(id)) {
+      this._matches.set(id, match)
       return match
     }
 
@@ -44,7 +49,7 @@ class Scoreboard implements ScoreBoardInterface {
   }
 
   updateScore(id: string, homeTeamScore: number, awayTeamScore: number): Match | null {
-    const match = this.matches.get(id)
+    const match = this._matches.get(id)
     if(match) {
       match.updateScore(homeTeamScore, awayTeamScore)
     }
@@ -54,12 +59,18 @@ class Scoreboard implements ScoreBoardInterface {
   finishMatch(id: string): void {
     const match = this.getMatch(id)
     if(match) {
-      this.matches.delete(match.id)
+      this._matches.delete(match.id)
     }
   }
 
-  getSumary(): Match[] {
-    return [...this.matches.values()]
+  getSummary(): Match[] {
+    return [...this._matches.values()]
+      .sort((a, b) => {
+        if(a.totalScore === b.totalScore) {
+          return b.createdAt.getTime() - a.createdAt.getTime()
+        }
+        return b.totalScore - a.totalScore
+      })
   }
 }
 

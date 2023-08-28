@@ -3,43 +3,60 @@ import MatchScore from "./matchScore"
 
 
 interface MatchInterface {
-  id: string,
-  createdAt: Date,
-  homeTeam: Team,
-  awayTeam: Team,
+  get score(): MatchScore
+  get totalScore(): number
+  get id(): string
+  get createdAt(): Date
+  get homeTeam(): Team
+  get awayTeam(): Team
 
   updateScore(homeTeamScore: number, awayTeamScore: number): Match
 }
 
 
 class Match implements MatchInterface {
-  id: string
-  createdAt: Date
-  homeTeam: Team
-  awayTeam: Team
+  private _id: string
+  private _createdAt: Date
+  private _homeTeam: Team
+  private _awayTeam: Team
 
   constructor(id: string, createdAt: Date, homeTeamName: string, awayTeamName: string) {
-    this.id = id
-    this.createdAt = createdAt
-    this.homeTeam = new Team(homeTeamName)
-    this.awayTeam = new Team(awayTeamName)
+    this._id = id
+    this._createdAt = createdAt
+    this._homeTeam = new Team(homeTeamName)
+    this._awayTeam = new Team(awayTeamName)
+  }
+
+  get homeTeam(): Team {
+    return this._homeTeam
+  }
+
+  get awayTeam(): Team {
+    return this._awayTeam
   }
 
   get score(): MatchScore {
     return new MatchScore(
-      this.homeTeam,
-      this.awayTeam
+      this._homeTeam,
+      this._awayTeam
     )
   }
 
-  updateScore(homeTeamScore: number, awayTeamScore: number): Match {
-    this.homeTeam.score = Number.isInteger(homeTeamScore)
-      ? homeTeamScore
-      : Math.round(homeTeamScore)
+  get id(): string {
+      return this._id
+  }
 
-    this.awayTeam.score = Number.isInteger(awayTeamScore)
-      ? awayTeamScore
-      : Math.round(awayTeamScore)
+  get createdAt(): Date {
+    return this._createdAt
+  }
+
+  get totalScore(): number {
+    return this._homeTeam.score + this._awayTeam.score
+  }
+
+  updateScore(homeTeamScore: number, awayTeamScore: number): Match {
+    this._homeTeam.score = homeTeamScore
+    this._awayTeam.score = awayTeamScore
 
     return this
   }
