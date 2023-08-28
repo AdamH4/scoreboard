@@ -11,6 +11,7 @@ interface MatchInterface {
   state: MatchState, 
 
   updateScore(homeTeamScore: number, awayTeamScore: number): Match
+  finishMatch(): Match
 }
 
 
@@ -41,6 +42,11 @@ class Match implements MatchInterface {
     this.homeTeam.score = homeTeamScore
     this.awayTeam.score = awayTeamScore
 
+    return this
+  }
+
+  finishMatch(): Match {
+    this.state = MatchState.FINISHED
     return this
   }
 }

@@ -4,10 +4,12 @@ import Match from './model/match';
 
 interface ScoreBoardInterface {
   matches: Map<String, Match>
+
   getMatch(key: string): Match | undefined
   createMatch(homeTeamName: string, awayTeamName: string): Match | null
-
   updateScore(id: string, homeTeamScore: number, awayTeamScore: number): Match | null
+  finishMatch(id: string): void
+  getSumary(): Match[]
 }
 
 
@@ -47,6 +49,18 @@ class Scoreboard implements ScoreBoardInterface {
       match.updateScore(homeTeamScore, awayTeamScore)
     }
     return null
+  }
+
+  finishMatch(id: string): void {
+    const match = this.getMatch(id)
+    if(match) {
+      match.finishMatch()
+      this.matches.delete(match.id)
+    }
+  }
+
+  getSumary(): Match[] {
+    return [...this.matches.values()]
   }
 }
 
