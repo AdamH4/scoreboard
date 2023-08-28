@@ -1,7 +1,6 @@
 import { test, expect, describe, beforeEach } from '@jest/globals'
 import Scoreboard from '../src/scoreboard'
 import Match from '../src/model/match'
-import MatchState from '../src/model/matchState'
 
 
 describe('Update match score', () => {
@@ -20,11 +19,6 @@ describe('Update match score', () => {
     expect(match?.score.scoreString).toBe("1:0")
   })
 
-  test('Update match state', () => {
-    match?.updateScore(1, 0)
-
-    expect(match?.state).toBe(MatchState.IN_PROGRESS)
-  })
 
   test('Update match score from scoreboard', () => {
     if(match?.id){

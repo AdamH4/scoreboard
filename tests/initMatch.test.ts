@@ -1,7 +1,6 @@
 import { test, expect, describe, beforeEach } from '@jest/globals'
 import Scoreboard from '../src/scoreboard'
 import Match from '../src/model/match'
-import MatchState from '../src/model/matchState'
 
 
 describe('Scoreboard init match', () => {
@@ -28,10 +27,6 @@ describe('Scoreboard init match', () => {
       const matchInScoreboard = scoreboard.getMatch(match?.id)
       expect(matchInScoreboard).toEqual(match)
     }
-  })
-
-  test('Match is started', () => {
-    expect(match?.state).toBe(MatchState.STARTED)
   })
 
   test('Match was created now', () => {

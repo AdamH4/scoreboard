@@ -54,7 +54,6 @@ class Scoreboard implements ScoreBoardInterface {
   finishMatch(id: string): void {
     const match = this.getMatch(id)
     if(match) {
-      match.finishMatch()
       this.matches.delete(match.id)
     }
   }
