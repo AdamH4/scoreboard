@@ -33,6 +33,18 @@ describe('Scoreboard init match', () => {
     expect(match?.createdAt).toEqual(now)
   })
 
+  test('Home team name', () => {
+    expect(match?.homeTeam.name).toBe('Mexico')
+  })
+
+  test('Away team name', () => {
+    expect(match?.awayTeam.name).toBe('Canada')
+  })
+
+  test('Initial total score', () => {
+    expect(match?.totalScore).toBe(0)
+  })
+
   test('Match has initial score', () => {
     expect(match?.score.scoreString).toBe('0:0')
   })
