@@ -52,7 +52,7 @@ describe('Scoreboard sumarry', () => {
   })
 
 
-  test('Get sumarry', () => {
+  test('Should get summary of scoreboard in right order', () => {
     const summary = scoreboard.getSummary()
 
     expect(summary).toStrictEqual(outputMatches)

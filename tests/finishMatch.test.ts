@@ -14,7 +14,7 @@ describe('Finish match', () => {
   })
 
 
-  test('Finished match is removed from matches', () => {
+  test('Should finish match and remove it from matches', () => {
     if(match){
       scoreboard.finishMatch(match.id)
       const matchFromScoreboard = scoreboard.getMatch(match.id)

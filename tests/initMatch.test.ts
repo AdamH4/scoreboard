@@ -18,34 +18,34 @@ describe('Scoreboard init match', () => {
     )
   })
 
-  test('Match size increased', () => {
+  test('Should increase matches size', () => {
     expect(scoreboard.matches.length).toBe(1)
   })
 
-  test('Match exists in scoreboard', () => {
+  test('Match should exists in scoreboard', () => {
     if(match?.id) {
       const matchInScoreboard = scoreboard.getMatch(match?.id)
       expect(matchInScoreboard).toEqual(match)
     }
   })
 
-  test('Match was created now', () => {
+  test('Match should be created now', () => {
     expect(match?.createdAt).toEqual(now)
   })
 
-  test('Home team name', () => {
+  test('Home team name should be Mexico', () => {
     expect(match?.homeTeam.name).toBe('Mexico')
   })
 
-  test('Away team name', () => {
+  test('Away team name should be Canada', () => {
     expect(match?.awayTeam.name).toBe('Canada')
   })
 
-  test('Initial total score', () => {
+  test('Initial total score should be zero', () => {
     expect(match?.totalScore).toBe(0)
   })
 
-  test('Match has initial score', () => {
+  test('Match string score shoudl be 0:0', () => {
     expect(match?.score.scoreString).toBe('0:0')
   })
 

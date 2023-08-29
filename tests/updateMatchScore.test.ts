@@ -13,14 +13,14 @@ describe('Update match score', () => {
     match = scoreboard.createMatch('Mexico', 'Canada')
   })
 
-  test('Update match score from match', () => {
+  test('Should update match score of match', () => {
     match?.updateScore(1, 0)
 
     expect(match?.score.scoreString).toBe("1:0")
   })
 
 
-  test('Update match score from scoreboard', () => {
+  test('Should update match score with scoreboard method', () => {
     if(match){
       scoreboard.updateScore(match.id, 4, 1)
 
@@ -28,7 +28,7 @@ describe('Update match score', () => {
     }
   })
 
-  test('Update match score with float number', () => {
+  test('Should update match score with float number', () => {
     if(match){
       scoreboard.updateScore(match.id, 1.25, 1.75)
 

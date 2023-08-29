@@ -12,11 +12,11 @@ describe('Scoreboard init', () => {
     scoreboard = new Scoreboard()
   })
 
-  test('Initialize Scoreboard', () => {
+  test('Should initialize Scoreboard', () => {
     expect(scoreboard).toBeDefined()
   })
 
-  test('Has no matches', () => {
+  test('Should have no matches', () => {
     expect(scoreboard.matches.length).toBe(0)
   })
 })
